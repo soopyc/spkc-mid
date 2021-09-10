@@ -23,6 +23,7 @@ def main() -> int:
         num = nums.pop()
         evens.append(num) if num % 2 == 0 else odds.append(num)
 
+    print()
     print(f" Odd numbers: {len(odds)}")
     print(f"Even numbers: {len(evens)}")
     print(f" All numbers: {len(odds) + len(evens)}")
