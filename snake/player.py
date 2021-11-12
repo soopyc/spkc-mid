@@ -13,7 +13,7 @@ class Player:
         self.turtle.goto(0, 0)
         self.direction = "stop"
 
-    def _setup_listeners(self, win: turtle.TurtleScreen):
+    def setup_listeners(self, win: turtle.TurtleScreen):
         win.listen()
         win.onkeypress(self.up, "Up")
         win.onkeypress(self.down, "Down")
@@ -21,28 +21,32 @@ class Player:
         win.onkeypress(self.right, "Right")
 
     def up(self):
+        logging.debug('Up pressed')
         if self.direction == 'down':
             logging.debug("Cannot move up, ignoring request")
             return
         self.direction = 'up'
 
     def down(self):
+        logging.debug('Down pressed')
         if self.direction == 'up':
             logging.debug("Cannot move down, ignoring request")
             return
-        self.direction = 'up'
+        self.direction = 'down'
 
     def left(self):
+        logging.debug('Left pressed')
         if self.direction == 'right':
             logging.debug("Cannot move left, ignoring request")
             return
-        self.direction = 'up'
+        self.direction = 'left'
 
     def right(self):
+        logging.debug('Right pressed')
         if self.direction == 'left':
             logging.debug("Cannot move right, ignoring request")
             return
-        self.direction = 'up'
+        self.direction = 'right'
 
     @staticmethod
     def _add_coors(x, y, tx, ty):
@@ -55,8 +59,8 @@ class Player:
         _movements = {
             'up': (0, 20),
             'down': (0, -20),
-            'left': (20, 0),
-            'right': (-20, 0),
+            'left': (-20, 0),
+            'right': (20, 0),
             'stop': (0, 0)
         }
         coord = (self.turtle.xcor(), self.turtle.ycor())
